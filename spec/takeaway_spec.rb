@@ -2,6 +2,12 @@ require_relative "../lib/takeaway"
 
 describe Takeaway do
 
+	Mail.defaults do
+		delivery_method :test
+	end
+
+	include Mail::Matchers
+
 	let(:takeaway){Takeaway.new}
 	let(:order){ {pizza: 2, soda: 3, chinese: 1} }
 
@@ -24,5 +30,10 @@ describe Takeaway do
 	it "should place an order if the price is right" do
 		takeaway.process_order(order, 21.50)
 		expect(takeaway.place_order(order)).to be_true
+	end
+
+	it "should send an email if order is being delivered" do
+		takeaway.place_order(order) 
+		should have_sent_email.to('nkeszler10@gmail.com')
 	end
 end

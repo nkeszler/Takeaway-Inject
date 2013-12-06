@@ -1,7 +1,10 @@
 require_relative 'inject'
+require_relative '../lib/email'
 
 class Takeaway
 	
+	include Email
+
 	DISHES = {pizza: 5.50, 
 	   		  chinese: 6.00, 
 	   		  burger: 8.00, 
@@ -24,7 +27,7 @@ class Takeaway
 	end
 
 	def place_order(order)
-		# twilio not working...
-		true
+		create_email
 	end
+
 end	

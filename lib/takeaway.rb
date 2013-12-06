@@ -1,3 +1,5 @@
+require_relative 'inject'
+
 class Takeaway
 	
 	DISHES = {pizza: 5.50, 
@@ -15,7 +17,10 @@ class Takeaway
 	end
 
 	def order_price(order)
-		order.inject(0){|sum,item| sum += DISHES[item[0]] * item[1]}
+		# STD Inject => order.inject(0){|sum,item| sum += DISHES[item[0]] * item[1]}
+		# Super Inject :
+		block = lambda {|sum,item| sum += DISHES[item[0]] * item[1]}
+		order.super_inject(0,&block)
 	end
 
 	def place_order(order)

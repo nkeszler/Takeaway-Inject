@@ -1,5 +1,5 @@
 # Re-write of Inject method...
-class Array
+module Enumerable
 	
 	def super_inject(init_val, &block)
 		memo = init_val

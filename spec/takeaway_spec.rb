@@ -2,10 +2,12 @@ require_relative "../lib/takeaway"
 
 describe Takeaway do
 
+	# This is cool
 	Mail.defaults do
 		delivery_method :test
 	end
 
+	# well done for using them
 	include Mail::Matchers
 
 	let(:takeaway){Takeaway.new}

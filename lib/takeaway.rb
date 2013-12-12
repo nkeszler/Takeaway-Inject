@@ -1,6 +1,8 @@
 require_relative 'inject'
 require_relative '../lib/email'
 
+# Overall, I'm pretty happy with your Takeaway 
+# but your super-inject is seriously flawed
 class Takeaway
 	
 	include Email
